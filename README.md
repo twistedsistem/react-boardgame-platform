@@ -1,1 +1,0 @@
-# react-boardgame-platform
