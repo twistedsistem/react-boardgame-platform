@@ -1,12 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { Stage, Layer, Text} from 'react-konva';
+import Card from './Card';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class App extends Component {
+  state = {
+    isDragging: false,
+    x: 50,
+    y: 50
+  };
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  render() {
+    return (
+      <Stage width={window.innerWidth} height={window.innerHeight}>
+        <Layer>
+          <Text
+            text="Draggable Text"
+            x={this.state.x}
+            y={this.state.y}
+            draggable
+            fill={this.state.isDragging ? 'green' : 'black'}
+            onDragStart={() => {
+              this.setState({
+                isDragging: true
+              });
+            }}
+            onDragEnd={e => {
+              this.setState({
+                isDragging: false,
+                x: e.target.x(),
+                y: e.target.y()
+              });
+            }}
+          />
+        </Layer>
+        <Card />
+      </Stage>
+    );
+  }
+}
+
+render(<App />, document.getElementById('root'));
