@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Stage, Layer, Text} from 'react-konva';
+import { Stage, Layer, Group, Text, Rect} from 'react-konva';
 import Card from './Card';
 
 class App extends Component {
@@ -33,8 +33,32 @@ class App extends Component {
               });
             }}
           />
+          <Card />
+          <Group id="Hands">
+              <Group id="Global">
+                <Rect
+                    x={20}
+                    y={window.innerHeight * .7}
+                    width={window.innerWidth * .95}
+                    height={window.innerHeight * .3}
+                    fill="blue"
+                    stroke="black"
+                    strokeWidth='2'
+                />
+              </Group>
+              <Group id="Player1">
+                <Rect
+                     x={20}
+                     y={window.innerHeight * .72}
+                     width={window.innerWidth * .95}
+                     height={window.innerHeight * .3}
+                     fill="Yellow"
+                     stroke="black"
+                     strokeWidth='2'
+                />
+              </Group>
+          </Group>
         </Layer>
-        <Card />
       </Stage>
     );
   }
