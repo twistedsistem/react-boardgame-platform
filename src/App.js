@@ -25,7 +25,8 @@ const DATA = [
     id: "player3", label: 'Player Three',
     items: [
       {id: 'card5', label: 'Player Card Five'}, 
-      {id: 'card6', label: 'Player Card Six'}
+      {id: 'card6', label: 'Player Card Six'}, 
+      {id: 'card7', label: 'Player Card Seven'}
     ]
   }
 ];
